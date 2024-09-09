@@ -1,0 +1,32 @@
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  generate-api-docs:
+    name: Generate API Documentation
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: OpenAPI GitHub Pages Documentation
+      uses: msayson/openapi-github-pages-action@v2.0.0
+      with:
+        # JSON string configs for each OpenAPI spec to document
+        # - generate-api-spec-command: (Optional) Command to run to generate spec file
+        # - openapi-json-filepath: Filepath of OpenAPI JSON spec
+        # - api-doc-filepath: Filepath for generated API doc, within the common directory defined by api-docs-dir
+        api-configs: |-
+          [
+            {
+              "openapi-json-filepath": "petstore.yml",
+              "api-doc-filepath": "index.html"
+            }
+          ]
+        # Parent directory to use for generated API docs HTML
+        api-docs-dir: 'docs'

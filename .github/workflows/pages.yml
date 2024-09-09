@@ -13,7 +13,6 @@ jobs:
     name: Generate API Documentation
     runs-on: ubuntu-latest
     steps:
-
     - name: OpenAPI GitHub Pages Documentation
       uses: msayson/openapi-github-pages-action@v2.0.0
       with:
